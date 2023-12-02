@@ -30,7 +30,7 @@ object Day1 extends App:
           case Some(m) => loop(s.drop(m.start + 1), m.matched :: acc)
       loop(s)
 
-  def calibrationValue(pattern: Regex, mapping: String => String)(line: String): (Option[Int]) =
+  def calibrationValue(pattern: Regex, mapping: String => String)(line: String): Option[Int] =
     val m = pattern.findAllWithOverlap(line)
     for
       f <- m.headOption.map(mapping)
