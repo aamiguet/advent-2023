@@ -6,3 +6,4 @@
 * Day 2 : a quick and easy one
 * Day 3 : knowning where indexes start and stop is hard 🤣
 * Day 4 : what a lucky elf!
+* Day 5 : part two was a great opportunity to use `Range`, I can't believe I got it right on the first try!
