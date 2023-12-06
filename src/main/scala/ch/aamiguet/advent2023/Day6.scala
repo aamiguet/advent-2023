@@ -12,9 +12,14 @@ object Day6 extends App:
       record: Long
   ):
     lazy val waysToBeat: Long =
-      val r = 0L until time
-      r.foldLeft(0L): (acc, t) =>
-        if (time - t) * t > record then acc + 1L else acc
+      val b = -time.toDouble
+      val c = record.toDouble
+      val root = math.sqrt(math.pow(b, 2d) - 4d * c)
+      val highSolution = (-b + root) / 2d
+      val lowSolution = (-b - root) / 2d
+      val upperBound = if highSolution.isWhole then highSolution - 1d else math.floor(highSolution)
+      val lowerBound = if lowSolution.isWhole then lowSolution + 1d else math.ceil(lowSolution)
+      (upperBound - lowerBound + 1d).toLong
 
   private def parse(lines: List[String]): List[Race] =
     val times = pattern.findAllIn(lines.head).map(_.toLong).toList
