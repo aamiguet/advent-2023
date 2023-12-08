@@ -21,7 +21,7 @@ object Day7 extends App:
   ):
     import Rank.*
 
-    private def rank0(size: Int, maxRepetition: Int): Rank = size match
+    private def rank0(distinctCards: Int, maxRepetition: Int): Rank = distinctCards match
       case 1 => FiveOfAKind
       case 2 =>
         maxRepetition match

@@ -23,7 +23,7 @@ class Day7Test extends AnyFlatSpec with should.Matchers:
     assert(List(h1, h2).sorted == List(h2, h1))
   }
 
-  "Day6" should "solve both examples" in {
+  "Day7" should "solve both examples" in {
     assert(part1(lines) == 6440)
     assert(part2(lines) == 5905)
   }
