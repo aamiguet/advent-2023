@@ -10,3 +10,4 @@
 * Day 6 : solved by brute force but we should be able to find an analytical solution. After all it's just a quadratic equation. UPDATE : went for it!
 * Day 7 : ordering everything.
 * Day 8 : keeping part two for later.
+* Day 9 : part two: ok let's copy-paste and change signs 😂.
