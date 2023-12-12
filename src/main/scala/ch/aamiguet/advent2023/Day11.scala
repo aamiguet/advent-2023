@@ -8,13 +8,13 @@ object Day11 extends App:
 
   case class Pos(x: Long, y: Long)
 
-  def parse(lines: List[String]): List[Pos] =
+  private def parse(lines: List[String]): List[Pos] =
     for
       (l, x) <- lines.zipWithIndex
       (c, y) <- l.zipWithIndex if c == '#'
     yield Pos(x, y)
 
-  def expand(pos: List[Pos], ratio: Long): List[Pos] =
+  private def expand(pos: List[Pos], ratio: Long): List[Pos] =
     val xs = pos.map(_.x).toSet
     val ys = pos.map(_.y).toSet
     val exs = (0 to xs.max.toInt).toList.filterNot(xs.contains)
@@ -24,7 +24,7 @@ object Day11 extends App:
       val y = p.y + (eys.takeWhile(_ < p.y).size * (ratio - 1L))
       Pos(x, y)
 
-  def allDistances(galaxies: List[Pos], acc: List[(Pos, Pos, Long)] = Nil): List[(Pos, Pos, Long)] =
+  private def allDistances(galaxies: List[Pos], acc: List[(Pos, Pos, Long)] = Nil): List[(Pos, Pos, Long)] =
     if galaxies.isEmpty then acc
     else
       val g1 = galaxies.head
