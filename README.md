@@ -14,3 +14,4 @@
 * Day 10 : well I hope I won't have to read my implementation for part two ever again!
 * Day 11 : why do I keep trying with `Int`? `Long` is always the solution!
 * Day 12 : a bit of cache can do wonders but still far from an optimized solution.
+* Day 13 : we don't really need to fix the smudge.
