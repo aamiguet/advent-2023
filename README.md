@@ -15,3 +15,4 @@
 * Day 11 : why do I keep trying with `Int`? `Long` is always the solution!
 * Day 12 : a bit of cache can do wonders but still far from an optimized solution.
 * Day 13 : we don't really need to fix the smudge.
+* Day 14 : I thought it was handy that I could mutate values in a Array: helped at first and then led to headscratching behavior.
