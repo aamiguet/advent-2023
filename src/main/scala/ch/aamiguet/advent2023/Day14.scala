@@ -79,7 +79,7 @@ object Day14 extends App:
     if period > 0 then
       val shift = (limit - n) % period.toLong
       history.drop(period - shift.toInt - 1).head._2
-    else cycle(cycled, n + 1, limit, (s, cycled.clone) :: history)
+    else cycle(cycled, n + 1, limit, (s, cycled) :: history)
 
   def load(arr: Array[Array[Ground]]): Int =
     val s = arr.size
