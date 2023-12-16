@@ -17,4 +17,4 @@
 * Day 13 : we don't really need to fix the smudge.
 * Day 14 : I thought it was handy that I could mutate values in a Array: helped at first and then led to headscratching behavior.
 * Day 15 : I'm on a strong streak of getting the right answer on the first try. Am I jinxing myself?
-* Day 16 : probably not optimized (part two took a bit above 1s to compute) but the job is done!
+* Day 16 : probably far from optimized (part two took a bit above 1s to compute) but the job is done!
