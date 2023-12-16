@@ -15,22 +15,17 @@ object Day15 extends App:
   case class Remove(label: String) extends Operation
   case class Add(lens: Lens) extends Operation
 
-  case class Step(
-      operation: Operation,
-      lens: Lens
-  )
-
   def hash(s: String): Int =
     s.foldLeft(0): (acc, c) =>
       ((acc + c) * 17) % 256
 
-  def remove(boxes: Map[Int, List[Lens]], label: String): Map[Int, List[Lens]] =
+  private def remove(boxes: Map[Int, List[Lens]], label: String): Map[Int, List[Lens]] =
     val box = hash(label)
     boxes.updatedWith(box):
       case Some(ls) => Some(ls.filter(_.label != label))
       case None => None
 
-  def add(boxes: Map[Int, List[Lens]], lens: Lens): Map[Int, List[Lens]] =
+  private def add(boxes: Map[Int, List[Lens]], lens: Lens): Map[Int, List[Lens]] =
     val box = hash(lens.label)
     boxes.updatedWith(box):
       case Some(ls) if ls.exists(l => l.label == lens.label) =>
@@ -38,7 +33,7 @@ object Day15 extends App:
       case Some(ls) => Some(lens :: ls)
       case None => Some(List(lens))
 
-  def initialize(
+  private def initialize(
       ops: List[Operation],
       boxes: Map[Int, List[Lens]] = Map.empty[Int, List[Lens]]
   ): Map[Int, List[Lens]] =
@@ -49,7 +44,7 @@ object Day15 extends App:
         case Add(lens) => add(boxes, lens)
       initialize(ops.tail, updatedBoxes)
 
-  def parse(line: String): List[Operation] =
+  private def parse(line: String): List[Operation] =
     line
       .split(",")
       .toList
