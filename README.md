@@ -18,3 +18,4 @@
 * Day 14 : I thought it was handy that I could mutate values in a Array: helped at first and then led to headscratching behavior.
 * Day 15 : I'm on a strong streak of getting the right answer on the first try. Am I jinxing myself?
 * Day 16 : probably far from optimized (part two took a bit above 1s to compute) but the job is done!
+* Day 17 : what a terrible implementation, but I think I got the right idea. Needs improvement though. I will tackle part two later.
