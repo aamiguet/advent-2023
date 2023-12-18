@@ -23,7 +23,13 @@ class Day18Test extends AnyFlatSpec with should.Matchers:
       |U 2 (#7a21e3)""".stripMargin.split("\n").toList
   )
 
+  "Day18" should "correctly convert hex to direction & distance" in {
+    assert(d.digParameter("#70c710") == ("R", 461937))
+    assert(d.digParameter("#a77fa3") == ("U", 686074))
+    assert(d.digParameter("#411b91") == ("D", 266681))
+  }
+
   "Day18" should "solve both example" in {
     assert(d.part1 == 62)
-    // assert(d.part2 == 94)
+    assert(d.part2 == 952408144115L)
   }
