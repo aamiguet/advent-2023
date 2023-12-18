@@ -24,6 +24,24 @@ class Day17(lines: List[String]):
     case Bottom extends Direction
   import Direction.*
 
+  lazy val initPath = List(Pos(0, 0))
+  lazy val toVisit = List(
+    Visit(
+      Pos(0, 1),
+      Left,
+      1,
+      0,
+      initPath
+    ),
+    Visit(
+      Pos(1, 0),
+      Top,
+      1,
+      0,
+      initPath
+    )
+  )
+
   private def oppositeDirection(direction: Direction): Direction = direction match
     case Left => Right
     case Top => Bottom
@@ -120,28 +138,43 @@ class Day17(lines: List[String]):
         case Nil => computeCost(filteredToVisit.tail)
         case vs => computeCost(filteredToVisit.tail ++ vs)
 
+  private def nextUltraVisit(
+      visit: Visit
+  ): List[Visit] =
+    updateVisits(visit)
+    val incrementedCost = visit.cost + cityGrid(visit.pos)
+    val extendedPath = visit.pos :: visit.path
+    val forwardCands =
+      if visit.blockCount < 10 then
+        nextForwardPos(visit.pos, visit.from).map((p, d) =>
+          Visit(p, d, visit.blockCount + 1, incrementedCost, extendedPath)
+        )
+      else Nil
+    val turnCands =
+      if visit.blockCount > 3 then
+        nextTurnPos(visit.pos, visit.from).map((p, d) =>
+          Visit(p, d, 1, incrementedCost, extendedPath)
+        )
+      else Nil
+    val cands = forwardCands ++ turnCands
+    cands
+
+  private def computeUltraCost(toVisit: List[Visit]): Unit =
+    val filteredToVisit = toVisit.filter(hasToBeVisited(_)).sortBy(_.cost)
+    if filteredToVisit.nonEmpty then
+      nextUltraVisit(filteredToVisit.head) match
+        case Nil => computeUltraCost(filteredToVisit.tail)
+        case vs => computeUltraCost(filteredToVisit.tail ++ vs)
+
   lazy val part1: Int =
-    val initPath = List(Pos(0, 0))
-    val toVisit = List(
-      Visit(
-        Pos(0, 1),
-        Left,
-        1,
-        0,
-        initPath
-      ),
-      Visit(
-        Pos(1, 0),
-        Top,
-        1,
-        0,
-        initPath
-      )
-    )
+    visitMap.keySet.map(visitMap.updateWith(_)(_ => None))
     computeCost(toVisit)
     minCost(Pos(xSize - 1, ySize - 1))
 
-  lazy val part2: Int = ???
+  lazy val part2: Int =
+    visitMap.keySet.map(visitMap.updateWith(_)(_ => None))
+    computeUltraCost(toVisit)
+    minCost(Pos(xSize - 1, ySize - 1))
 
 object Day17 extends App:
 

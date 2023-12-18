@@ -24,5 +24,5 @@ class Day17Test extends AnyFlatSpec with should.Matchers:
 
   "Day17" should "solve both example" in {
     assert(d.part1 == 102)
-    // assert(d.part2 == 102)
+    assert(d.part2 == 94)
   }
