@@ -20,3 +20,4 @@
 * Day 16 : probably far from optimized (part two took a bit above 1s to compute) but the job is done!
 * Day 17 : what a terrible implementation, but I think I got the right idea. Needs improvement though. I will tackle part two later.
 * Day 18 : that's another part two for later 😅.
+* Day 19 : part two looks fun but will have to wait too!
