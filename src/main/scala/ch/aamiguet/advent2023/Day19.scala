@@ -82,6 +82,15 @@ class Day19(lines: List[String]):
             case None => loop(rules.tail)
       loop(workflow.rules)
 
+  case class PartRange(
+    ratings: Map[Char, List[Range]]
+  ):
+    lazy val combinations: Long = ratings.values.map(_.map(_.size).sum).foldLeft(1L)(_ * _.toLong)
+
+    def applyRule(rule: Rule): List[(PartRange, Result)] = ???
+
+    def applyWorkflow(workflow: Workflow): List[(PartRange, Result)] = ???
+
   object Part:
     def apply(s: String): Part =
       val ratings = s
@@ -96,6 +105,13 @@ class Day19(lines: List[String]):
   lazy val part1: Int =
     val in = workflows("in")
     parts.filter(_.applyWorkflow(in) == Accepted).map(_.value).sum
+
+  lazy val part2: Long =
+    val in = workflows("in")
+    val r = List(1 to 4000)
+    val init = PartRange(Map('a' -> r, 'b' -> r, 'c' -> r, 'd' -> r))
+    val prs = init.applyWorkflow(in)
+    prs.filter(_._2 == Accepted).map(_._1.combinations).sum
 
 object Day19 extends App:
 

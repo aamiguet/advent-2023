@@ -21,3 +21,4 @@
 * Day 17 : what a terrible implementation, but I think I got the right idea. Needs improvement though. I will tackle part two later.
 * Day 18 : that's another part two for later 😅.
 * Day 19 : part two looks fun but will have to wait too!
+* Day 20 : trying to catch up; can we brute force part two?
