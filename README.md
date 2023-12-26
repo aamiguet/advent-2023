@@ -22,3 +22,6 @@
 * Day 18 : that's another part two for later 😅.
 * Day 19 : part two looks fun but will have to wait too!
 * Day 20 : trying to catch up; can we brute force part two?
+* Day 21 : quick part one
+* Day 22 : 🙈
+* Day 23 : finally getting somewhere! Not the most efficient way to solve part two, but the job is done.
