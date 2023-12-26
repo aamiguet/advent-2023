@@ -19,7 +19,7 @@ class Day20Test extends AnyFlatSpec with should.Matchers:
       |%a -> inv, con
       |&inv -> b
       |%b -> con
-      |&con -> outputa""".stripMargin.split("\n").toList
+      |&con -> output""".stripMargin.split("\n").toList
   )
 
   "Day20" should "solve all example" in {
