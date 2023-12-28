@@ -25,3 +25,4 @@
 * Day 21 : quick part one
 * Day 22 : 🙈
 * Day 23 : finally getting somewhere! Not the most efficient way to solve part two, but the job is done.
+* Day 24 : solving part one with highschool mathematics... so long ago 👴, I had to grab my formula book!
