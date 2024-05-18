@@ -71,9 +71,31 @@ class Day24(lines: List[String]):
         loop(hs.tail, acc ++ pairs)
     loop(hailstones)
 
+  def areCoplanar(h1: Hailstone, h2: Hailstone, h3: Hailstone): Boolean =
+    val det = h1.velocity.x * h2.velocity.y * h3.velocity.z +
+      h2.velocity.x * h3.velocity.y * h1.velocity.z +
+      h3.velocity.x * h1.velocity.y * h2.velocity.z -
+      h1.velocity.z * h2.velocity.y * h3.velocity.x -
+      h2.velocity.z * h3.velocity.y * h1.velocity.x -
+      h3.velocity.z * h1.velocity.y * h2.velocity.x
+    det == 0
+
+  lazy val coplanarHailstones: List[(Hailstone, Hailstone, Hailstone)] =
+    def loop(
+        hs: List[Hailstone],
+        acc: List[(Hailstone, Hailstone, Hailstone)] = List.empty
+    ): List[(Hailstone, Hailstone, Hailstone)] =
+      if hs.tail.isEmpty then acc
+      else
+        val triplets = hs.tail.tail
+          .filter(areCoplanar(hs.head, hs.tail.head, _))
+          .map((hs.head, hs.tail.head, _))
+        loop(hs.tail, acc ++ triplets)
+    loop(hailstones)
+
   lazy val part1: Int = crossingFuturePathCount(200000000000000d, 400000000000000d)
   lazy val part2: Int =
-    println(parallelHailstones)
+    println(coplanarHailstones mkString "\n")
     ???
 
 object Day24 extends App:
